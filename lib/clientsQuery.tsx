@@ -6,8 +6,6 @@ export default async function clientsQuery() {
   try {
     data = await client.getEntries({
       content_type: "clients",
-      select:
-        "fields.name,fields.slug,fields.logo,fields.link,fields.projectTitle,fields.description,fields.services,fields.mainPhoto,fields.mobilePhoto,fields.workInProgress",
       order: "-fields.projectRating",
     });
   } catch (err: any) {
@@ -31,6 +29,11 @@ export default async function clientsQuery() {
       mainPhoto: `http:${e?.fields.mainPhoto?.fields?.file?.url}`,
       mobilePhoto: `http:${e?.fields.mobilePhoto?.fields?.file?.url}`,
       workInProgress: e.fields.workInProgress,
+      hasTestimonial: e.fields.hasTestimonial,
+      testimonial: `${e.fields.testimonial}`,
+      keyPerson: `${e.fields.keyPerson}`,
+      keyPersonImg: `http:${e?.fields.keyPersonImg?.fields?.file?.url}`,
+      keyPersonPosition: `${e.fields.keyPersonPosition}`,
     }));
 
     return clientItem;
@@ -47,6 +50,11 @@ export default async function clientsQuery() {
         mainPhoto: ``,
         mobilePhoto: ``,
         workInProgress: false,
+        hasTestimonial: false,
+        testimonial: "",
+        keyPerson: "",
+        keyPersonImg: "",
+        keyPersonPosition: ``,
       },
     ];
 

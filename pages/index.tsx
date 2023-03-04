@@ -2,22 +2,23 @@ import CallToActionSection from "@/components/Layout/CallToActionSection";
 import HeroSection from "@/components/Layout/HeroSection";
 import HomeAboutSection from "@/components/Layout/HomeAboutSection";
 import HomeOfferSection from "@/components/Layout/HomeOfferSection";
+import LogoQuilt from "@/components/Layout/LogoQuilt";
 import TestimonialsSection from "@/components/Layout/TestimonialsSection";
 import clientsQuery from "@/lib/clientsQuery";
 import { InferGetServerSidePropsType } from "next";
 
 const Index = ({
-  clientList,
+  clientTestimonials,
   heroImgArrays,
+  logoQuilt,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
-  // TODO pass the arrays in the appropriate components > HERO images, client images, testimonials
-
   return (
     <>
       <HeroSection heroImgArrays={heroImgArrays} />
       <HomeAboutSection />
+      <LogoQuilt logoQuilt={logoQuilt} />
       <HomeOfferSection />
-      <TestimonialsSection />
+      <TestimonialsSection clientTestimonials={clientTestimonials} />
       <CallToActionSection />
     </>
   );
@@ -37,10 +38,25 @@ export const getStaticProps = async () => {
 
   const heroImgArrays = [heroImgArr1, heroImgArr2];
 
-  // TODO Create the array on the server for client side display
+  const logoQuilt = clientList.map((item: Client) => ({
+    logo: item.logo,
+    link: item.link,
+  }));
+
+  const clientTestimonials = clientList
+    .filter((item: Client) => item.hasTestimonial)
+    .map((item: Client) => ({
+      person: item.keyPerson,
+      position: item.keyPersonPosition,
+      image: item.keyPersonImg,
+      testimonial: item.testimonial,
+      company: item.name,
+      companyLogo: item.logo,
+      companyLink: item.link,
+    }));
 
   return {
-    props: { clientList, heroImgArrays },
-    // TODO revalidate: 1000 * 60 * 60 * 4,
+    props: { heroImgArrays, logoQuilt, clientTestimonials },
+    revalidate: 1000 * 60 * 60 * 4,
   };
 };

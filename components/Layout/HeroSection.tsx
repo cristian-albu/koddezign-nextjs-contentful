@@ -5,8 +5,8 @@ import Image from "next/image";
 
 const styles = {
   imageArray: `h-full  min-h-[50vh] md:min-h-[80vh] w-[49%] flex flex-col justify-start items-start relative`,
-  img: `w-full object-contain mb-5 border-2 border-white shadow-2xl shadow-black/30 relative z-[5]`,
-  dottedLineVertical: `absolute top-0  border-l-[1px] border-l-gray-400  border-dashed z-[4]`,
+  img: `w-full object-contain mb-5 border-2 border-white drop-shadow-[15px_25px_10px_rgba(0, 0, 0, 20)] md:drop-shadow-[35px_55px_25px_rgba(0,0,0,0.25)] relative z-[5]`,
+  dottedLineVertical: `absolute  border-l-[1px] border-l-gray-400  border-dashed z-[4]`,
   dottedLineHorizontal: `absolute border-b-[1px] border-b-gray-400  border-dashed z-[4]`,
 };
 
@@ -16,7 +16,9 @@ const HeroSection = ({
   heroImgArrays: Array<Array<string>>;
 }) => {
   return (
-    <section className="flex flex-wrap justify-center items-center md:flex-row-reverse px-[2rem]">
+    <section className="flex flex-wrap justify-center items-center relative md:flex-row-reverse px-[2rem] bg-gradient-to-tr from-white to-gray-200">
+      <div className="absolute right-[95%] top-[50%] w-[20vw] aspect-square bg-[#ff5500]/20 rounded-full blur-[80px]" />
+      <div className="absolute left-[90%] bottom-[90%] w-[20vw] aspect-square bg-[#ff5500]/20 rounded-full blur-[80px]" />
       <div className="max-w-[600px] w-full md:w-1/2 relative flex justify-between items-center md:pl-[5%] ">
         <div className={`${styles.imageArray} mt-[10%]`}>
           <div
@@ -32,11 +34,13 @@ const HeroSection = ({
               className={styles.img}
             />
           ))}
-          <div className={`${styles.dottedLineVertical} left-0 h-[85%]`} />
+          <div
+            className={`${styles.dottedLineVertical} left-0 top-0  h-[85%]`}
+          />
         </div>
         <div className={`${styles.imageArray} mt-[30%]`}>
           <div
-            className={`${styles.dottedLineHorizontal} top-[71%] left-0 w-[150%]`}
+            className={`${styles.dottedLineHorizontal} top-[71%] left-[-15%] w-[170%]`}
           />
           {heroImgArrays[1].map((item: string) => (
             <Image
@@ -48,13 +52,17 @@ const HeroSection = ({
               className={styles.img}
             />
           ))}
-          <div className={`${styles.dottedLineVertical} left-0 h-[85%]`} />
-          <div className={`${styles.dottedLineVertical} right-0 h-full`} />
+          <div
+            className={`${styles.dottedLineVertical} left-0 top-[-20%]  h-[115%]`}
+          />
+          <div
+            className={`${styles.dottedLineVertical} right-0 top-0  h-full`}
+          />
         </div>
       </div>
 
       <div className="max-w-[600px] flex flex-col items-start w-full md:w-1/2  md:pr-[10vw] gap-5 ">
-        <h1 className="text-3xl md:text-5xl">{data.title}</h1>
+        <h1 className="text-3xl md:text-6xl md:leading-[1.3]">{data.title}</h1>
         <p>{data.description}</p>
 
         <Link href={data.buttonLink} className="btnPrimary">

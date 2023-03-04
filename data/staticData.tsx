@@ -1,6 +1,6 @@
 import { MdOutlineImageSearch, MdOutlineShoppingCart } from "react-icons/md";
 import { FiUsers } from "react-icons/fi";
-import { BiCodeAlt, BiMessageDetail, BiPen } from "react-icons/bi";
+import { BiBookOpen, BiCodeAlt, BiMessageDetail, BiPen } from "react-icons/bi";
 import { BsJournalBookmark } from "react-icons/bs";
 import Image from "next/image";
 
@@ -23,8 +23,8 @@ export const navData: NavData = [
     icon: (
       <Image
         src={"/assets/logo_koddezign.svg"}
-        width={28}
-        height={28}
+        width={32}
+        height={32}
         alt="logo Koddezign"
         className="w-[1rem] h-[1rem] object-contain"
       />
@@ -56,12 +56,18 @@ export const staticHomeAboutData = {
   title: `Hello, we're Koddezign! `,
   phoneticExplanation: `co-di-zain`,
   illustration: "/assets/Koddezign_illustration.svg",
-  description: `A web design agency that wants to help with your website.`,
+  description: `We make websites`,
   buttonText: `See more about us`,
   buttonIcon: <FiUsers />,
   buttonLink: sitePages.about,
-  subSectionTitle: `Why a website?`,
-  subSectionDescription: `A website can be like a home for your business, where all the roads from social media and google searches lead. People land there and expect clarity on what you do, how you do it, for whom you do it, and most importantly, why you do it.`,
+  subSectionTitle: `But why would you need a website?`,
+  subSectionDescription: `A website is like a home for your business, where all the roads from social media and web searches lead. People land there and expect clarity on what you do, how you do it, for whom you do it, and most importantly, why you do it.`,
+};
+
+export type OfferItem = {
+  title: string;
+  icon: JSX.Element;
+  text: string;
 };
 
 export type StaticOfferData = {
@@ -71,11 +77,11 @@ export type StaticOfferData = {
   buttonLink: string;
   buttonIcon: JSX.Element;
   mainImage: string;
-  keyBenefits: Array<{ icon: JSX.Element; text: string }>;
+  keyBenefits: Array<OfferItem>;
 };
 
 export const staticOfferSection: StaticOfferData = {
-  title: `We work so you don't have to`,
+  title: `We'll work on what we do best so that you can focus on what you do best`,
   description: `We'll create a visually appealing, custom-tailored website that aligns with your brand's unique look and feel. Imagine having all the key elements for a successful website:`,
   buttonText: `View our pricing`,
   buttonIcon: <MdOutlineShoppingCart />,
@@ -83,14 +89,17 @@ export const staticOfferSection: StaticOfferData = {
   mainImage: `/assets/astadia_showcase_mockup.png`,
   keyBenefits: [
     {
-      icon: <BsJournalBookmark />,
+      title: `Content`,
+      icon: <BiBookOpen />,
       text: `Compelling and optimized content, crafted with a well-thought-out strategy, persuasive copywriting, and organic SEO.`,
     },
     {
+      title: `Design`,
       icon: <BiPen />,
       text: `Engaging and personalized design, with clean layouts, informative graphics, and interactive animations that leave a lasting impression.`,
     },
     {
+      title: `Development`,
       icon: <BiCodeAlt />,
       text: `Cutting-edge development, with custom functionalities, seamless integrations, and fully-responsive interfaces that adapt to any device.`,
     },
@@ -98,18 +107,25 @@ export const staticOfferSection: StaticOfferData = {
 };
 
 export const staticTestimonialData = {
-  title: `You probably have a great business, so you deserve more visibility.`,
+  title: `What our clients think of us`,
+
   buttonText: `See our projects`,
   buttonIcon: <MdOutlineImageSearch />,
   buttonLink: sitePages.projects,
 };
 
 export const staticCallToActionData = {
-  title: `So let's take this step together. `,
-  description: `Contact us for a free consultation, to evaluate your website and discover the potential for improvement or to start building something from scratch. We’re offering a 30% discount for businesses that have teams smaller than 6 people until the first of May, 2023.`,
+  title: `You probably have a great business, so let's get you more visibility.`,
+  description: `So let's take this step together. Contact us for a free consultation, to evaluate your website and discover the potential for improvement or to start building something from scratch. `,
   buttonText: `Let's start a project`,
   buttonIcon: <BiMessageDetail />,
   buttonLink: sitePages.contact,
 };
 
 export const staticFooterData = {};
+
+export const staticAboutData = {
+  title: `Hello`,
+  text: "We're Koddezign",
+  image: "/assets/Koddezign_illustration.svg",
+};

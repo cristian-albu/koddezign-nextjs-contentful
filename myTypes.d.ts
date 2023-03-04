@@ -22,6 +22,34 @@ interface Client {
   workInProgress: boolean;
   hasCaseStudy?: boolean;
   caseStudy?: RichText;
+  hasTestimonial: boolean;
+  testimonial: string;
+  keyPerson: string;
+  keyPersonImg: string;
+  keyPersonPosition: string;
+}
+
+interface TestimonialItem {
+  person: string;
+  position: string;
+  image: string;
+  testimonial: string;
+  company: string;
+  companyLogo: string;
+  companyLink: string;
+}
+
+interface ProjectItem {
+  id: string;
+  name: string;
+  logo: string;
+  link: string | any;
+  projectTitle: string;
+  description: string;
+  services: Array<ClientServices>;
+  mainPhoto: string;
+  mobilePhoto: string;
+  workInProgress: boolean;
 }
 
 type ClientCard = {
