@@ -24,6 +24,10 @@ interface Client {
   caseStudy?: RichText;
 }
 
+type ClientCard = {
+  props: Client;
+};
+
 type ClientList = Array<Client>;
 
 type ClientObject = { [key: string]: ClientList };
@@ -33,7 +37,9 @@ interface OfferItem {
   title: string;
   mainImage: string;
   description: string;
+  featureList: Array<any>;
   order: number;
+  microservices: Array<ClientServices>;
 }
 
 type OfferList = Array<OfferItem>;

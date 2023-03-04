@@ -1,37 +1,46 @@
+import CallToActionSection from "@/components/Layout/CallToActionSection";
+import HeroSection from "@/components/Layout/HeroSection";
+import HomeAboutSection from "@/components/Layout/HomeAboutSection";
+import HomeOfferSection from "@/components/Layout/HomeOfferSection";
+import TestimonialsSection from "@/components/Layout/TestimonialsSection";
 import clientsQuery from "@/lib/clientsQuery";
-import offerQuery from "@/lib/offerQuery";
 import { InferGetServerSidePropsType } from "next";
 
 const Index = ({
   clientList,
-  offerList,
+  heroImgArrays,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
-  return (
-    <div className="p-10">
-      <div className="grid grid-cols-3 gap-5 mb-10">
-        {clientList.map((client: Client) => (
-          <div key={client.id}>{client.name}</div>
-        ))}
-      </div>
+  // TODO pass the arrays in the appropriate components > HERO images, client images, testimonials
 
-      <div className="grid grid-cols-3 gap-5 mb-10">
-        {offerList.map((offer: OfferItem) => (
-          <div key={offer.id}>{offer.title}</div>
-        ))}
-      </div>
-    </div>
+  return (
+    <>
+      <HeroSection heroImgArrays={heroImgArrays} />
+      <HomeAboutSection />
+      <HomeOfferSection />
+      <TestimonialsSection />
+      <CallToActionSection />
+    </>
   );
 };
 export default Index;
 
 export const getStaticProps = async () => {
-  const [clientList, offerList] = await Promise.all([
-    clientsQuery(),
-    offerQuery(),
-  ]);
+  const clientList = await clientsQuery();
+
+  const heroImgArr1 = clientList
+    .filter((item: Client, index: number) => index < 3)
+    .map((item: Client) => item.mainPhoto);
+
+  const heroImgArr2 = clientList
+    .filter((item: Client, index: number) => index >= 3 && index < 6)
+    .map((item: Client) => item.mainPhoto);
+
+  const heroImgArrays = [heroImgArr1, heroImgArr2];
+
+  // TODO Create the array on the server for client side display
 
   return {
-    props: { clientList, offerList },
-    // revalidate: 1000 * 60 * 60 * 4,
+    props: { clientList, heroImgArrays },
+    // TODO revalidate: 1000 * 60 * 60 * 4,
   };
 };

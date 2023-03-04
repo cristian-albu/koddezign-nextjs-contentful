@@ -1,1 +1,32 @@
-@tailwind base; @tailwind components; @tailwind utilities;
+@tailwind base;
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: white;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 15px;
+  background-color: white;
+}
+
+*::-webkit-scrollbar-track {
+  background: white;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: black;
+}
+
+body {
+  background-color: #f7f7f7;
+}
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btnPrimary {
+    @apply bg-[#ff5500] text-white flex items-center justify-center gap-2 px-2 py-1;
+  }
+}

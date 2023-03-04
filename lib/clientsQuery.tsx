@@ -8,6 +8,7 @@ export default async function clientsQuery() {
       content_type: "clients",
       select:
         "fields.name,fields.slug,fields.logo,fields.link,fields.projectTitle,fields.description,fields.services,fields.mainPhoto,fields.mobilePhoto,fields.workInProgress",
+      order: "-fields.projectRating",
     });
   } catch (err: any) {
     console.log(`Something went wrong: ${err.message}`, err);
