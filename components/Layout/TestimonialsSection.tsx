@@ -20,7 +20,10 @@ const TestimonialsSection = ({
       </div>
       <div className="flex flex-wrap w-full max-w-[1200px] justify-between items-start ">
         {clientTestimonials.map((item: TestimonialItem) => (
-          <div className="mb-[5rem] md:mb-0 bg-white/80 p-8 border-2 border-gray-200 w-full md:w-[31%] rounded-lg backdrop-blur-md drop-shadow-[35px_55px_25px_rgba(0,0,0,0.25)]">
+          <div
+            key={item.person}
+            className="mb-[5rem] md:mb-0 bg-white/80 p-8 border-2 border-gray-200 w-full md:w-[31%] rounded-lg backdrop-blur-md drop-shadow-[35px_55px_25px_rgba(0,0,0,0.25)]"
+          >
             <div className="flex justify-center items-center relative w-[8rem] h-[8rem] object-cover rounded-full shadow-xl shadow-black/20 mb-5 mt-[-6rem] mx-auto">
               <Image
                 src={item.image}
