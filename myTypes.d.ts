@@ -85,3 +85,24 @@ interface OfferItem {
 type OfferList = Array<OfferItem>;
 
 type OfferObject = { [key: string]: OfferList };
+
+type FormState = {
+  value: string;
+  errorState: string;
+  firstFocus: boolean;
+};
+
+type FormSetState = React.Dispatch<React.SetStateAction<FormState>>;
+
+type FormValidationFunc = () => {
+  message: string;
+  err: boolean;
+};
+
+type TextInput = {
+  state: FormState;
+  setState: FormSetState;
+  validationCheck: FormValidationFunc;
+  name: string;
+  type?: string;
+};

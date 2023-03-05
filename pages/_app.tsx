@@ -6,6 +6,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import { useState } from "react";
+import Gdpr from "@/components/Gdpr";
 
 const merriweather = Merriweather({
   weight: ["300", "400", "700"],
@@ -15,6 +17,7 @@ const merriweather = Merriweather({
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
+  const [showPrivacy, setShowPrivacy] = useState(false);
   return (
     <div
       className={`${merriweather.className} ${merriweather.variable}`}
@@ -70,6 +73,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <Footer />
         </motion.div>
       </AnimatePresence>
+      <Gdpr showPrivacy={showPrivacy} setShowPrivacy={setShowPrivacy} />
     </div>
   );
 }

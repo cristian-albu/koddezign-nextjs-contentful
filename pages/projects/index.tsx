@@ -1,3 +1,4 @@
+import BlurBall from "@/components/BlurBall";
 import clientsQuery from "@/lib/clientsQuery";
 import { InferGetServerSidePropsType } from "next";
 import Image from "next/image";
@@ -8,8 +9,11 @@ const Projects = ({
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
   return (
     <>
-      <section className="flex flex-col justify-center items-center px-[2rem] py-[20vh] bg-gradient-to-tr from-white to-gray-100">
-        <div className="flex w-full max-w-[1200px] items-start justify-center mb-5 md:mb-[-5rem]">
+      <section className="flex flex-col justify-center items-center px-[2rem] py-[20vh] bg-gradient-to-tr from-white to-gray-100 relative">
+        <BlurBall horizontal="right-[-5%]" vertical="top-[-15%]" />
+        <BlurBall horizontal="left-[-15%]" vertical="top-[30%]" />
+        <BlurBall horizontal="right-[-15%]" vertical="bottom-[5%]" />
+        <div className="flex w-full max-w-[1200px] items-start justify-center mb-5 md:mb-[-5rem] relative">
           <h1 className="w-full text-2xl md:text-5xl">Our projects</h1>
         </div>
         <div className="flex flex-wrap justify-between items-start w-full max-w-[1200px] relative">

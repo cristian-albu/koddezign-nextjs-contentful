@@ -1,6 +1,8 @@
+import BlurBall from "@/components/BlurBall";
 import servicesQuery from "@/lib/servicesQuery";
 import { InferGetServerSidePropsType } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 import { MdOutlineShoppingCart } from "react-icons/md";
 
@@ -10,8 +12,10 @@ const Pricing = ({
   const [tabState, setTabState] = useState(0);
 
   return (
-    <section className="grid items-center justify-items-center px-[2rem]  min-h-[100vh] py-[6rem]  ">
-      <div className="w-full flex  flex-col justify-center items-stretch max-w-[1200px] h-full ">
+    <section className="grid items-center justify-items-center px-[2rem]  min-h-[100vh] py-[6rem] relative ">
+      <BlurBall horizontal="right-[-5%]" vertical="top-[-15%]" />
+      <BlurBall horizontal="left-[-10%]" vertical="bottom-0" />
+      <div className="w-full flex  flex-col justify-center items-stretch max-w-[1200px] h-full relative">
         <div className="flex justify-between w-full flex-wrap">
           <div className="w-full md:w-[30%] flex flex-col">
             <div className="w-full mb-[3rem] border-b-[1px] border-b-gray-400 border-dashed pb-5">
@@ -19,7 +23,7 @@ const Pricing = ({
                 <MdOutlineShoppingCart /> <h1 className="">Pricing</h1>
               </div>
 
-              <p>We do these 3 things</p>
+              <p>Here are our website packages</p>
             </div>
             <div className="flex flex-row md:flex-col justify-between md:justify-start items-start mb-5 ">
               {clientList.map((item: Service, index: number) => (
@@ -38,11 +42,11 @@ const Pricing = ({
               ))}
             </div>
           </div>
-          <div className="w-full md:w-[66%] mb-10  flex items-start  justify-between relative overflow-hidden">
+          <div className="w-full md:w-[66%] mb-10  flex items-start  justify-between relative ">
             {clientList.map((item: Service, index: number) => (
               <div
                 key={item.id + index}
-                className={`w-full min-w-full flex flex-col  transform-origin-tl transition-opacity duration-300 ${
+                className={`w-full min-w-full flex flex-col items-start justify-start transition-opacity duration-300 ${
                   tabState == index
                     ? " opacity-1  relative"
                     : " opacity-0  absolute"
@@ -67,13 +71,13 @@ const Pricing = ({
                 <p className="mb-3 text-sm">{item.description}</p>
 
                 <p className="mb-2">This may include:</p>
-                <ul className="">
+                <ul className="flex flex-wrap items-center">
                   {item.features.map((feature: string, i: number) => (
                     <li
                       key={i}
-                      className="pl-3 border-l-[1px] border-l-gray-400 border-dashed mb-4 text-sm"
+                      className="pl-3 w-full md:w-1/2 border-l-[1px] border-l-gray-400 border-dashed mb-3 text-sm"
                     >
-                      <p className="">🚀 {feature}</p>
+                      <p className="">✅ {feature}</p>
                     </li>
                   ))}
                 </ul>
@@ -86,7 +90,7 @@ const Pricing = ({
                   {item.services.map((subServices: ClientServices) => (
                     <div
                       key={subServices.title}
-                      className="w-1/2 mb-3 gap-3 flex items-center justify-start"
+                      className="w-1/3 mb-3 gap-2 flex items-center justify-start"
                     >
                       <Image
                         src={subServices.img}
@@ -94,16 +98,20 @@ const Pricing = ({
                         height={20}
                         alt={subServices.title}
                       />
-                      <p className="text-sm">{subServices.title}</p>
+                      <p className="text-xs">{subServices.title}</p>
                     </div>
                   ))}
                 </div>
-                <h4 className="text-xl md:text-2xl  mb-2">
+
+                <h4 className="text-xl md:text-2xl  mb-5">
                   Starting at{" "}
                   <span className="text-[#ff5500] font-bold">
                     {item.startingPrice}$
                   </span>
                 </h4>
+                <Link href={"/contact"} className="btnPrimary mb-10">
+                  Let's start a project
+                </Link>
               </div>
             ))}
           </div>
