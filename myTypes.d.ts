@@ -29,6 +29,18 @@ interface Client {
   keyPersonPosition: string;
 }
 
+interface Service {
+  id: string;
+  title: string;
+  description: string;
+  features: Array<string>;
+  startingPrice: number;
+  image: string;
+  services: Array<ClientServices>;
+}
+
+type ServiceList = Array<Service>;
+
 interface TestimonialItem {
   person: string;
   position: string;
