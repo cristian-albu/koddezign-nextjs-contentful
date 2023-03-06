@@ -1,4 +1,7 @@
-import React from "react";
+import { PrivacyContext } from "@/context/privacyContext";
+import React, { useContext } from "react";
+import { MdOutlinePolicy } from "react-icons/md";
+import { PrivacyProps } from "./Gdpr";
 
 type Checkbox = {
   name?: string;
@@ -6,6 +9,7 @@ type Checkbox = {
   onChange?: any;
   checked?: boolean;
   disabled?: boolean;
+  privacy?: boolean;
 };
 
 export function Checkbox({
@@ -14,7 +18,10 @@ export function Checkbox({
   onChange,
   checked,
   disabled,
+  privacy,
 }: Checkbox) {
+  const { showPrivacy, setShowPrivacy }: PrivacyProps =
+    useContext(PrivacyContext);
   return (
     <div className="cb-custom-cls">
       <label>
@@ -28,6 +35,15 @@ export function Checkbox({
         />
         <div />
         <p>{text}</p>
+        {privacy && (
+          <button
+            className="flex items-center gap-1"
+            onClick={() => setShowPrivacy(true)}
+          >
+            <MdOutlinePolicy />
+            Privacy policy*
+          </button>
+        )}
       </label>
     </div>
   );

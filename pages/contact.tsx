@@ -8,6 +8,7 @@ const ContactPage = () => {
   const [mailSentSuccess, setMailSentSuccess] = useState(false);
 
   const [checkBox, setCheckBox] = useState(false);
+  const [checkBoxErr, setCheckboxErr] = useState(false);
 
   //? Name input
   const [nameState, setNameState] = useState<FormState>({
@@ -79,10 +80,17 @@ const ContactPage = () => {
         },
       });
 
+    if (!checkBox) {
+      setCheckboxErr(true);
+    } else {
+      setCheckboxErr(false);
+    }
+
     if (
       !nameInvalidCheck().err &&
       !emailInvalidCheck().err &&
-      !messageInvalidCheck().err
+      !messageInvalidCheck().err &&
+      checkBox
     ) {
       sendContactForm({
         name: nameState.value,
@@ -145,8 +153,15 @@ const ContactPage = () => {
                     name="gdpr"
                     checked={checkBox}
                     onChange={() => setCheckBox((checkBox) => !checkBox)}
-                    text="I agree with the privacy policy of Koddezign"
+                    text="I agree with the "
+                    privacy={true}
                   />
+                  {checkBoxErr && (
+                    <p className="w-full text-red-500 mt-5">
+                      Please check all the requirements and don't forget to
+                      agree with the privacy policy
+                    </p>
+                  )}
                 </div>
                 <button className="btnPrimary mt-5" type="submit" name="submit">
                   Send

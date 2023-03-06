@@ -8,6 +8,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { useState } from "react";
 import Gdpr from "@/components/Gdpr";
+import PrivacyContext from "@/context/privacyContext";
 
 const merriweather = Merriweather({
   weight: ["300", "400", "700"],
@@ -17,7 +18,7 @@ const merriweather = Merriweather({
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  const [showPrivacy, setShowPrivacy] = useState(false);
+
   return (
     <div
       className={`${merriweather.className} ${merriweather.variable}`}
@@ -47,33 +48,35 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={router.route}
-          initial="initialState"
-          animate="animateState"
-          exit="exitState"
-          transition={{
-            duration: 0.2,
-          }}
-          variants={{
-            initialState: {
-              opacity: 0,
-            },
-            animateState: {
-              opacity: 1,
-            },
-            exitState: {
-              opacity: 0,
-            },
-          }}
-        >
-          <Nav />
-          <Component {...pageProps} />
-          <Footer />
-        </motion.div>
-      </AnimatePresence>
-      <Gdpr showPrivacy={showPrivacy} setShowPrivacy={setShowPrivacy} />
+      <PrivacyContext>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={router.route}
+            initial="initialState"
+            animate="animateState"
+            exit="exitState"
+            transition={{
+              duration: 0.2,
+            }}
+            variants={{
+              initialState: {
+                opacity: 0,
+              },
+              animateState: {
+                opacity: 1,
+              },
+              exitState: {
+                opacity: 0,
+              },
+            }}
+          >
+            <Nav />
+            <Component {...pageProps} />
+            <Footer />
+          </motion.div>
+        </AnimatePresence>
+        <Gdpr />
+      </PrivacyContext>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import BlurBall from "@/components/BlurBall";
+import Wrapper from "@/components/Wrapper";
 import servicesQuery from "@/lib/servicesQuery";
 import { InferGetServerSidePropsType } from "next";
 import Image from "next/image";
@@ -15,7 +16,7 @@ const Pricing = ({
     <section className="grid items-center justify-items-center px-[2rem]  min-h-[100vh] py-[6rem] relative ">
       <BlurBall horizontal="right-[-5%]" vertical="top-[-15%]" />
       <BlurBall horizontal="left-[-10%]" vertical="bottom-0" />
-      <div className="w-full flex  flex-col justify-center items-stretch max-w-[1200px] h-full relative">
+      <Wrapper>
         <div className="flex justify-between w-full flex-wrap">
           <div className="w-full md:w-[30%] flex flex-col">
             <div className="w-full mb-[3rem] border-b-[1px] border-b-gray-400 border-dashed pb-5">
@@ -116,7 +117,7 @@ const Pricing = ({
             ))}
           </div>
         </div>
-      </div>
+      </Wrapper>
     </section>
   );
 };

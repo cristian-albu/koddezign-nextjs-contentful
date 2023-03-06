@@ -1,4 +1,10 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useState,
+  useContext,
+} from "react";
 import { setCookie, getCookie, hasCookie } from "cookies-next";
 
 import {
@@ -7,6 +13,7 @@ import {
   AiOutlineSetting,
 } from "react-icons/ai";
 import { RxCrossCircled } from "react-icons/rx";
+import { PrivacyContext } from "@/context/privacyContext";
 
 type Checkbox = {
   name?: string;
@@ -111,12 +118,14 @@ const staticData = {
   },
 };
 
-type PrivacyProps = {
+export type PrivacyProps = {
   showPrivacy: boolean;
   setShowPrivacy: Dispatch<SetStateAction<boolean>>;
 };
 
-export default function Gdpr({ showPrivacy, setShowPrivacy }: PrivacyProps) {
+export default function Gdpr() {
+  const { showPrivacy, setShowPrivacy }: PrivacyProps =
+    useContext(PrivacyContext);
   const [showBanner, setShowBanner] = useState(false);
   const [showPreferences, setShowPreferences] = useState(false);
 
@@ -280,14 +289,14 @@ export default function Gdpr({ showPrivacy, setShowPrivacy }: PrivacyProps) {
           <p>{staticData.preferences.desc}</p>
 
           <div className="mb-5 flex flex-col">
-            <span>
+            <span className="flex gap-1">
               {staticData.preferences.seeMore}{" "}
-              <div
-                className={`${styles.secondaryButton} mb-5`}
+              <button
+                className={`flex mb-5 text-[#ff5500]`}
                 onClick={() => openPrivacy()}
               >
                 {staticData.banner.btnPrivacy}
-              </div>
+              </button>
             </span>
           </div>
 
