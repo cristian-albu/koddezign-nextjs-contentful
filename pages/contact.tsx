@@ -3,6 +3,7 @@ import Section from "@/components/Section";
 import TextInput from "@/components/TextInput";
 import BlurBall from "@/components/BlurBall";
 import { Checkbox } from "@/components/Checkbox";
+import DynHead from "@/components/DynHead";
 
 const ContactPage = () => {
   const [mailSentSuccess, setMailSentSuccess] = useState(false);
@@ -105,10 +106,15 @@ const ContactPage = () => {
 
   return (
     <>
-      <div className="relative min-h-[90vh] w-full">
+      <DynHead
+        title="Contact"
+        description="Contact us for a free consultation, to evaluate your website and discover the potential for improvement or to start building something from scratch."
+        image="/assets/Koddezign_illustration.svg"
+      />
+      <div className="relative min-h-[90vh] w-full py-[5rem] bg-white">
         <BlurBall horizontal="right-0" vertical="top-0" />
         <BlurBall horizontal="left-[-10%]" vertical="bottom-0" />
-        <Section bg="white">
+        <Section>
           <div className="flex items-center relative flex-wrap w-full max-w-[1200px] pt-[5rem] md:pt-5">
             <div className="w-full md:w-1/2 pl-[2rem] flex flex-col ">
               <h1 className="text-4xl mb-5">Let's get in touch</h1>

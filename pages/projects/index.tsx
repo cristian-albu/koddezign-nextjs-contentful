@@ -1,4 +1,5 @@
 import BlurBall from "@/components/BlurBall";
+import DynHead from "@/components/DynHead";
 import clientsQuery from "@/lib/clientsQuery";
 import { InferGetServerSidePropsType } from "next";
 import Image from "next/image";
@@ -9,6 +10,11 @@ const Projects = ({
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
   return (
     <>
+      <DynHead
+        title="Our Projects"
+        description="We'll create a visually appealing, custom-tailored website that aligns with your brand's unique look and feel. Imagine having all the key elements for a successful website"
+        image="/assets/astadia_showcase_mockup.png"
+      />
       <section className="flex flex-col justify-center items-center px-[2rem] py-[20vh] bg-gradient-to-tr from-white to-gray-100 relative">
         <BlurBall horizontal="right-[-5%]" vertical="top-[-15%]" />
         <BlurBall horizontal="left-[-15%]" vertical="top-[30%]" />
@@ -20,7 +26,7 @@ const Projects = ({
           {ProjectList.map((item: ProjectItem, index: number) => (
             <div
               key={item.id}
-              className={`w-full md:w-[33%] flex flex-col justify-start items-start relative mb-5  ${
+              className={`w-full md:w-[31%] flex flex-col justify-start items-start relative mb-5  ${
                 index % 3 == 0 && "top-0 md:top-[10rem]"
               } ${index % 3 == 1 && "top-0 md:top-[5rem]"} `}
             >

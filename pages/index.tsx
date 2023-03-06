@@ -1,3 +1,4 @@
+import DynHead from "@/components/DynHead";
 import CallToActionSection from "@/components/Layout/CallToActionSection";
 import HeroSection from "@/components/Layout/HeroSection";
 import HomeAboutSection from "@/components/Layout/HomeAboutSection";
@@ -14,6 +15,11 @@ const Index = ({
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
   return (
     <>
+      <DynHead
+        title="Koddezign"
+        description="You know, we've seen so many businesses struggle with their online presence. Maybe your website is outdated and not search engine optimized, or perhaps, you don't have any website at all."
+        image="/assets/Koddezign_illustration.svg"
+      />
       <HeroSection heroImgArrays={heroImgArrays} />
       <HomeAboutSection />
       <LogoQuilt logoQuilt={logoQuilt} />

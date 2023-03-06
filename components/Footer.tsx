@@ -14,13 +14,8 @@ const Footer = () => {
     <Section bg={"black"}>
       <Wrapper>
         <div className="flex justify-between flex-wrap w-full">
-          <div className="flex flex-col w-full md:w-1/3">
+          <div className="flex flex-col w-full md:w-1/3 my-5">
             <p className="text-xl mb-5">Koddezign</p>
-            <ul className="flex flex-col justify-start items-start gap-3">
-              <li></li>
-              <li></li>
-            </ul>
-
             <p className="text-xl my-5">Contact data</p>
             <ul className="flex flex-col justify-start items-start gap-3">
               <li>
@@ -33,9 +28,19 @@ const Footer = () => {
                   Email: contact@koddezign.com
                 </a>
               </li>
+            </ul>{" "}
+            <ul className="flex flex-col justify-start items-start gap-3 text-xs pr-5 my-5 text-gray-400">
+              <li>Business name: KODDZIGN S.R.L.</li>
+              <li>Business ID (CIF): 43722863</li>
+              <li>Registered (Reg. Com.): J22/526/2021</li>
+              <li>
+                Social headquarters: Romania, Iasi County, Miroslava, Street.
+                Radu Mihnea Voda, no. 6
+              </li>
+              <li>IBAN: RO90INGB0000999911121893 - ING Bank</li>
             </ul>
           </div>
-          <div className="flex flex-col w-full md:w-1/3">
+          <div className="flex flex-col w-full md:w-1/3 my-5">
             <p className="text-xl mb-5">Quick links</p>
             <ul className="flex flex-col justify-start items-start gap-3">
               {navData.map(
@@ -63,7 +68,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="flex flex-col w-full md:w-1/3">
+          <div className="flex flex-col w-full md:w-1/3 my-5">
             <p className="text-xl mb-5">Social media</p>
             <ul className="flex flex-col justify-start items-start gap-3">
               <li>
