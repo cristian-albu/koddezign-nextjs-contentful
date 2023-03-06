@@ -37,7 +37,6 @@ const Footer = () => {
                 Social headquarters: Romania, Iasi County, Miroslava, Street.
                 Radu Mihnea Voda, no. 6
               </li>
-              <li>IBAN: RO90INGB0000999911121893 - ING Bank</li>
             </ul>
           </div>
           <div className="flex flex-col w-full md:w-1/3 my-5">
