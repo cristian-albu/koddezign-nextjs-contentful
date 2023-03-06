@@ -5,6 +5,7 @@ import { InferGetServerSidePropsType } from "next";
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 function manageProgressBar(number: number) {
   switch (true) {
@@ -30,6 +31,18 @@ function manageProgressBar(number: number) {
 const Projects = ({
   ProjectList,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth <= 800);
+  }, []);
+
+  const attributes = !isMobile && {
+    initial: { opacity: 0, x: "50px" },
+    whileInView: { opacity: 1, x: "0px" },
+    transition: { type: "spring", damping: 15 },
+  };
+
   return (
     <>
       <DynHead
@@ -52,9 +65,7 @@ const Projects = ({
               className={`w-full md:w-[31%] flex flex-col justify-start items-start relative mb-5  ${
                 index % 3 == 0 && "top-0 md:top-[10rem]"
               } ${index % 3 == 1 && "top-0 md:top-[5rem]"} `}
-              initial={{ opacity: 0, x: "50px" }}
-              whileInView={{ opacity: 1, x: "0px" }}
-              transition={{ type: "spring", damping: 15 }}
+              {...attributes}
             >
               {item.workInProgress && item.percentCompleted != undefined && (
                 <div

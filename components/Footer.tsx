@@ -33,10 +33,7 @@ const Footer = () => {
               <li>Business name: KODDZIGN S.R.L.</li>
               <li>Business ID (CIF): 43722863</li>
               <li>Registered (Reg. Com.): J22/526/2021</li>
-              <li>
-                Social headquarters: Romania, Iasi County, Miroslava, Street.
-                Radu Mihnea Voda, no. 6
-              </li>
+              <li>Social headquarters: Romania, Iasi County</li>
             </ul>
           </div>
           <div className="flex flex-col w-full md:w-1/3 my-5">
