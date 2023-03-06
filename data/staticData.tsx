@@ -24,9 +24,9 @@ export const navData: NavData = [
       <Image
         src={"/assets/logo_koddezign.svg"}
         width={32}
-        height={32}
+        height={24}
         alt="logo Koddezign"
-        className="w-[1rem] h-[1rem] object-contain"
+        className="w-[32px] h-[24px] object-contain"
       />
     ),
   },

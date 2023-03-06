@@ -4,9 +4,9 @@ import { navData as data, NavItem } from "@/data/staticData";
 const Nav = () => {
   return (
     <div className="fixed top-0 left-0 z-[99] w-full  border-b-[1px] border-b-gray-300 flex items-center bg-white/40 text-black backdrop-blur-md">
-      <ul className="flex justify-between items-center w-full">
+      <div className="flex justify-between items-center w-full">
         {data.map((item: NavItem, index: number) => (
-          <li
+          <div
             key={item.link}
             className={`${
               index == 0 && "mr-auto"
@@ -19,9 +19,9 @@ const Nav = () => {
               {item.icon}
               {item.title}
             </Link>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

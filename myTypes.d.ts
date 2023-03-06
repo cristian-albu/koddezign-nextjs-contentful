@@ -27,6 +27,7 @@ interface Client {
   keyPerson: string;
   keyPersonImg: string;
   keyPersonPosition: string;
+  percentCompleted?: number;
 }
 
 interface Service {
@@ -62,6 +63,7 @@ interface ProjectItem {
   mainPhoto: string;
   mobilePhoto: string;
   workInProgress: boolean;
+  percentCompleted?: number;
 }
 
 type ClientCard = {

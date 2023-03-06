@@ -47,6 +47,7 @@ export const getStaticProps = async () => {
   const logoQuilt = clientList.map((item: Client) => ({
     logo: item.logo,
     link: item.link,
+    name: item.name,
   }));
 
   const clientTestimonials = clientList

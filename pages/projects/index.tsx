@@ -5,6 +5,27 @@ import { InferGetServerSidePropsType } from "next";
 import Image from "next/image";
 import React from "react";
 
+function manageProgressBar(number: number) {
+  switch (true) {
+    case number < 25:
+      return "bg-orange-400 text-black";
+    case number < 50:
+      return "bg-orange-200 text-black";
+    case number < 60:
+      return "bg-yellow-400 text-black";
+    case number < 70:
+      return "bg-yellow-200 text-black";
+    case number < 80:
+      return "bg-lime-400 text-black";
+    case number < 90:
+      return "bg-green-400 text-black";
+    case number <= 100:
+      return "bg-teal-400 text-black";
+    default:
+      return "bg-black text-white";
+  }
+}
+
 const Projects = ({
   ProjectList,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
@@ -19,8 +40,9 @@ const Projects = ({
         <BlurBall horizontal="right-[-5%]" vertical="top-[-15%]" />
         <BlurBall horizontal="left-[-15%]" vertical="top-[30%]" />
         <BlurBall horizontal="right-[-15%]" vertical="bottom-[5%]" />
-        <div className="flex w-full max-w-[1200px] items-start justify-center mb-5 md:mb-[-5rem] relative">
+        <div className="flex w-full max-w-[1200px] items-start justify-center mb-5 md:mb-[-5rem] relative flex-col">
           <h1 className="w-full text-2xl md:text-5xl">Our projects</h1>
+          <h2 className="mt-3">Each and every one of them has a story</h2>
         </div>
         <div className="flex flex-wrap justify-between items-start w-full max-w-[1200px] relative">
           {ProjectList.map((item: ProjectItem, index: number) => (
@@ -30,6 +52,15 @@ const Projects = ({
                 index % 3 == 0 && "top-0 md:top-[10rem]"
               } ${index % 3 == 1 && "top-0 md:top-[5rem]"} `}
             >
+              {item.workInProgress && item.percentCompleted != undefined && (
+                <div
+                  className={`absolute top-0 right-0 text-xs   px-3 py-2 rounded-md ${manageProgressBar(
+                    item.percentCompleted
+                  )}`}
+                >
+                  {item.percentCompleted}%
+                </div>
+              )}
               <Image
                 src={item.mainPhoto}
                 width={400}
@@ -66,11 +97,15 @@ const Projects = ({
                       </div>
                     ))}
                   </div>
-                  <a href={item.link} target="_blank" rel="noopener noreferrer">
-                    <h3 className="text-lg md:text-xl my-3 hover:text-[#ff5500] transition">
+                  <h3 className="text-lg md:text-xl my-3 hover:text-[#ff5500] transition">
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       {item.name}
-                    </h3>
-                  </a>
+                    </a>
+                  </h3>
 
                   <p className="w-full pt-[1rem] border-t-[1px] border-t-gray-400 border-dashed">
                     {item.projectTitle}
@@ -109,6 +144,8 @@ export const getStaticProps = async () => {
     mainPhoto: item.mainPhoto,
     mobilePhoto: item.mobilePhoto,
     workInProgress: item.workInProgress,
+    percentCompleted:
+      item.percentCompleted != undefined ? item.percentCompleted : 0,
   }));
 
   return {

@@ -42,7 +42,7 @@ const Footer = () => {
           </div>
           <div className="flex flex-col w-full md:w-1/3 my-5">
             <p className="text-xl mb-5">Quick links</p>
-            <ul className="flex flex-col justify-start items-start gap-3">
+            <div className="flex flex-col justify-start items-start gap-3">
               {navData.map(
                 (item: NavItem, index: number) =>
                   index > 0 && (
@@ -56,7 +56,7 @@ const Footer = () => {
                     </Link>
                   )
               )}
-              <li>
+              <div>
                 <button
                   onClick={() => setShowPrivacy(true)}
                   className="flex items-center gap-3"
@@ -64,44 +64,40 @@ const Footer = () => {
                   <MdOutlinePolicy />
                   Privacy policy
                 </button>
-              </li>
-            </ul>
+              </div>
+            </div>
           </div>
 
           <div className="flex flex-col w-full md:w-1/3 my-5">
             <p className="text-xl mb-5">Social media</p>
-            <ul className="flex flex-col justify-start items-start gap-3">
-              <li>
-                <a
-                  href="https://www.facebook.com/koddezign.marketing"
-                  className="hover:text-[#ff5500] transition underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Facebook
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.instagram.com/koddezign/"
-                  className="hover:text-[#ff5500] transition underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Instagram
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.linkedin.com/company/koddezign"
-                  className="hover:text-[#ff5500] transition underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  LinkedIn
-                </a>
-              </li>
-            </ul>
+            <div className="flex flex-col justify-start items-start gap-3">
+              <a
+                href="https://www.facebook.com/koddezign.marketing"
+                className="hover:text-[#ff5500] transition underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Facebook
+              </a>
+
+              <a
+                href="https://www.instagram.com/koddezign/"
+                className="hover:text-[#ff5500] transition underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Instagram
+              </a>
+
+              <a
+                href="https://www.linkedin.com/company/koddezign"
+                className="hover:text-[#ff5500] transition underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn
+              </a>
+            </div>
           </div>
         </div>
       </Wrapper>
