@@ -74,7 +74,7 @@ const staticData = {
     title: `Preferences`,
     seeMore: `See more on`,
     desc: `We use cookies to improve your browsing experience and to personalize the content we present. The preferences menu allows you to control the types of cookies you accept.`,
-    essentialTitle: `Esenţiale`,
+    essentialTitle: `Essential`,
     essentialDesc: `For the operation of the site. We need at least 1 cookie to store your choice (its name is "kdzConsentChoice")`,
     prefsTitle: `Preference`,
     prefDesc: `To be able to view certain types of content (example: Facebook posts or YouTube videos that use cookies)`,

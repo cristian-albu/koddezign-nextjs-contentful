@@ -31,7 +31,10 @@ const Pricing = ({
                   <MdOutlineShoppingCart /> <h1 className="">Pricing</h1>
                 </div>
 
-                <p>Here are our website packages</p>
+                <p>
+                  Here are our base website packages but every project that we
+                  do has a custom offer and everything is negotiable.{" "}
+                </p>
               </div>
               <div className="flex flex-row md:flex-col justify-between md:justify-start items-start mb-5 ">
                 {clientList.map((item: Service, index: number) => (
@@ -56,13 +59,13 @@ const Pricing = ({
               {clientList.map((item: Service, index: number) => (
                 <div
                   key={item.id + index}
-                  className={`w-full min-w-full flex flex-col items-start justify-start transition-opacity duration-300 ${
+                  className={`w-full min-w-full flex min-h-[90vh] flex-col items-start justify-center transition-opacity duration-300 ${
                     tabState == index
-                      ? " opacity-1  relative"
+                      ? " opacity-1  relative z-[50]"
                       : " opacity-0  absolute"
                   }`}
                 >
-                  <div className="flex flex-col items-center justify-start relative mb-5 w-[60%] md:w-[40%] mx-auto">
+                  {/* <div className="flex flex-col items-center justify-start relative mb-5 w-[60%] md:w-[40%] mx-auto">
                     <div className=" pb-6 bg-white  rounded-md shadow-black/20 shadow-lg relative z-[5]">
                       <Image
                         src={item.image}
@@ -74,7 +77,7 @@ const Pricing = ({
                     </div>
                     <div className="w-[20%] h-[1.5rem] bg-gray-100 shadow-black/20 shadow-lg relative z-[3]" />
                     <div className="w-[40%] h-[0.7rem] bg-white shadow-black/20 shadow-lg rounded-tr-2xl rounded-tl-2xl relative z-[4]" />
-                  </div>
+                  </div> */}
                   <h3 className="text-xl md:text-2xl font-bold mb-2">
                     {item.title}
                   </h3>

@@ -4,6 +4,7 @@ import clientsQuery from "@/lib/clientsQuery";
 import { InferGetServerSidePropsType } from "next";
 import Image from "next/image";
 import React from "react";
+import { motion } from "framer-motion";
 
 function manageProgressBar(number: number) {
   switch (true) {
@@ -46,11 +47,14 @@ const Projects = ({
         </div>
         <div className="flex flex-wrap justify-between items-start w-full max-w-[1200px] relative">
           {ProjectList.map((item: ProjectItem, index: number) => (
-            <div
+            <motion.div
               key={item.id}
               className={`w-full md:w-[31%] flex flex-col justify-start items-start relative mb-5  ${
                 index % 3 == 0 && "top-0 md:top-[10rem]"
               } ${index % 3 == 1 && "top-0 md:top-[5rem]"} `}
+              initial={{ opacity: 0, x: "50px" }}
+              whileInView={{ opacity: 1, x: "0px" }}
+              transition={{ type: "spring", damping: 15 }}
             >
               {item.workInProgress && item.percentCompleted != undefined && (
                 <div
@@ -120,7 +124,7 @@ const Projects = ({
                   className="w-[20%] h-auto object-contain relative mt-[-20%] rounded-sm border-2 border-y-4 border-white shadow-black/20 shadow-xl"
                 />
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>

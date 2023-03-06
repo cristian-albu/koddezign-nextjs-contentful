@@ -15,13 +15,13 @@ const AboutUs = () => {
       />
       <Section bg={`gradient-to-tr from-white to-gray-100`}>
         <Wrapper>
-          <div className="flex w-full items-center justify-between my-[10rem]">
+          <div className="flex w-full flex-wrap items-center justify-between my-[10rem]">
             <Image
               src={data.image}
               width={600}
               height={400}
               alt="Koddezign team"
-              className="w-[40%] h-auto border-b-[1px] border-b-gray-400 border-r-[1px] border-r-gray-400  border-dashed px-[2rem]"
+              className="w-full md:w-[40%] h-auto border-b-[1px] border-b-gray-400 border-r-[1px] border-r-gray-400  border-dashed px-[2rem]"
             />
             <div className="w-full md:w-[55%]">
               <h1 className="text-2xl md:text-5xl">{data.title}</h1>

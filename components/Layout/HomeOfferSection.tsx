@@ -3,6 +3,7 @@ import { OfferItem, staticOfferSection as data } from "@/data/staticData";
 import Image from "next/image";
 import Link from "next/link";
 import BlurBall from "../BlurBall";
+import { motion } from "framer-motion";
 
 const HomeOfferSection = () => {
   return (
@@ -13,22 +14,39 @@ const HomeOfferSection = () => {
         size="w-[10vw]"
       />
       <div className="flex flex-wrap w-full max-w-[1200px] mb-[2rem] relative">
-        <div className="w-full md:w-[33%] flex flex-col justify-center gap-3 items-start">
+        <motion.div
+          className="w-full md:w-[33%] flex flex-col justify-center gap-3 items-start"
+          initial={{ opacity: 0, x: "-100px" }}
+          whileInView={{ opacity: 1, x: "0px" }}
+          transition={{ type: "spring", damping: 15 }}
+        >
           <h2 className="text-xl md:text-3xl mb-5 border-b-[1px] border-b-gray-400 border-dashed pb-5">
             {data.title}
           </h2>
           <p>{data.description}</p>
-        </div>
-        <Image
-          src={data.mainImage}
-          width={900}
-          height={600}
-          alt=""
-          className="w-full md:w-[66%] h-auto object-contain pointer-events-none"
-        />
+        </motion.div>
+        <motion.div
+          className="w-full md:w-[66%]"
+          initial={{ opacity: 0, x: "100px" }}
+          whileInView={{ opacity: 1, x: "0px" }}
+          transition={{ type: "spring", damping: 15 }}
+        >
+          <Image
+            src={data.mainImage}
+            width={900}
+            height={600}
+            alt=""
+            className="w-full h-auto object-contain pointer-events-none"
+          />
+        </motion.div>
       </div>
 
-      <div className="flex flex-wrap w-full max-w-[1200px] justify-between">
+      <motion.div
+        className="flex flex-wrap w-full max-w-[1200px] justify-between"
+        initial={{ opacity: 0, y: "100px" }}
+        whileInView={{ opacity: 1, y: "0px" }}
+        transition={{ type: "spring", damping: 15 }}
+      >
         {data.keyBenefits.map((benefit: OfferItem, index: number) => (
           <div
             key={index}
@@ -39,7 +57,7 @@ const HomeOfferSection = () => {
             <p>{benefit.text}</p>
           </div>
         ))}
-      </div>
+      </motion.div>
 
       <div className="flex mt-[4rem] w-full justify-center items-center">
         <Link href={data.buttonLink} className="btnPrimary">

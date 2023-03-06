@@ -46,7 +46,8 @@ export const navData: NavData = [
 
 export const staticHeroData = {
   title: `Love at first [web]site`,
-  description: `You know, we've seen so many businesses struggle with their online presence. Maybe your website is outdated and not search engine optimized, or perhaps, you don't have any website at all.`,
+  description: `We've seen so many businesses struggle with their online presence. Maybe your website is outdated and not search engine optimized, or perhaps, you don't have any website at all. `,
+  description2: "We're here to give you the website of your dreams.",
   buttonText: `Start a project`,
   buttonIcon: <BiMessageDetail />,
   buttonLink: sitePages.contact,
@@ -56,7 +57,7 @@ export const staticHomeAboutData = {
   title: `Hello, we're Koddezign! `,
   phoneticExplanation: `co-di-zain`,
   illustration: "/assets/Koddezign_illustration.svg",
-  description: `We make websites`,
+  description: `We make 100% custom websites that reflect your businesses values and bring clarity to your customers.`,
   buttonText: `See more about us`,
   buttonIcon: <FiUsers />,
   buttonLink: sitePages.about,
@@ -116,7 +117,7 @@ export const staticTestimonialData = {
 
 export const staticCallToActionData = {
   title: `You probably have a great business, so let's get you more visibility.`,
-  description: `So let's take this step together. Contact us for a free consultation, to evaluate your website and discover the potential for improvement or to start building something from scratch. `,
+  description: `Let's take this step together. Contact us for a free consultation, to evaluate your website and discover the potential for improvement or to start building something from scratch. `,
   buttonText: `Let's start a project`,
   buttonIcon: <BiMessageDetail />,
   buttonLink: sitePages.contact,

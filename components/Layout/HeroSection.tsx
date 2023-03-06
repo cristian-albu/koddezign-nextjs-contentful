@@ -2,6 +2,7 @@ import React from "react";
 import { staticHeroData as data } from "@/data/staticData";
 import Link from "next/link";
 import Image from "next/image";
+import { useScroll, useTransform, motion } from "framer-motion";
 
 const styles = {
   imageArray: `h-full  min-h-[50vh] md:min-h-[80vh] w-[49%] flex flex-col justify-start items-start relative`,
@@ -15,6 +16,11 @@ const HeroSection = ({
 }: {
   heroImgArrays: Array<Array<string>>;
 }) => {
+  const { scrollY } = useScroll();
+
+  const y1 = useTransform(scrollY, [0, 300], [0, -200]);
+  const y2 = useTransform(scrollY, [0, 300], [0, -100]);
+
   return (
     <section className="flex flex-wrap justify-center items-center relative md:flex-row-reverse px-[2rem] bg-gradient-to-tr from-white to-gray-200">
       <div className="absolute right-[95%] top-[50%] w-[20vw] aspect-square bg-[#ff5500]/20 rounded-full blur-[80px]" />
@@ -24,16 +30,24 @@ const HeroSection = ({
           <div
             className={`${styles.dottedLineHorizontal} top-0 right-0 w-[185%]`}
           />
-          {heroImgArrays[0].map((item: string) => (
-            <Image
-              src={item}
-              width={500}
-              height={300}
-              alt={""}
-              key={item}
-              className={styles.img}
-            />
-          ))}
+
+          <motion.div
+            style={{ y: y1 }}
+            className="relative z-[50]"
+            transition={{ duration: 2, ease: "easeOut" }}
+          >
+            {heroImgArrays[0].map((item: string) => (
+              <Image
+                src={item}
+                width={500}
+                height={300}
+                alt={""}
+                key={item}
+                className={styles.img}
+              />
+            ))}
+          </motion.div>
+
           <div
             className={`${styles.dottedLineVertical} left-0 top-0  h-[85%]`}
           />
@@ -42,16 +56,22 @@ const HeroSection = ({
           <div
             className={`${styles.dottedLineHorizontal} top-[71%] left-[-15%] w-[170%]`}
           />
-          {heroImgArrays[1].map((item: string) => (
-            <Image
-              src={item}
-              width={500}
-              height={300}
-              alt={""}
-              key={item}
-              className={styles.img}
-            />
-          ))}
+          <motion.div
+            style={{ y: y2 }}
+            className="relative z-[50]"
+            transition={{ duration: 2, ease: "easeOut" }}
+          >
+            {heroImgArrays[1].map((item: string) => (
+              <Image
+                src={item}
+                width={500}
+                height={300}
+                alt={""}
+                key={item}
+                className={styles.img}
+              />
+            ))}
+          </motion.div>
           <div
             className={`${styles.dottedLineVertical} left-0 top-[-20%]  h-[115%]`}
           />
@@ -61,15 +81,21 @@ const HeroSection = ({
         </div>
       </div>
 
-      <div className="max-w-[600px] flex flex-col items-start w-full md:w-1/2  md:pr-[10vw] gap-5 ">
+      <motion.div
+        className="max-w-[600px] flex flex-col items-start w-full md:w-1/2  md:pr-[10vw] gap-5 "
+        initial={{ opacity: 0, x: "-100px" }}
+        whileInView={{ opacity: 1, x: "0px" }}
+        transition={{ type: "spring", damping: 15 }}
+      >
         <h1 className="text-3xl md:text-6xl md:leading-[1.3]">{data.title}</h1>
         <p>{data.description}</p>
+        <p>{data.description2}</p>
 
         <Link href={data.buttonLink} className="btnPrimary">
           {data.buttonIcon}
           {data.buttonText}
         </Link>
-      </div>
+      </motion.div>
     </section>
   );
 };

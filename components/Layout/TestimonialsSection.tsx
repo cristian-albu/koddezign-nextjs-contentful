@@ -3,6 +3,8 @@ import { staticTestimonialData as data } from "@/data/staticData";
 import Image from "next/image";
 import BlurBall from "../BlurBall";
 
+import { motion } from "framer-motion";
+
 const TestimonialsSection = ({
   clientTestimonials,
 }: {
@@ -18,7 +20,12 @@ const TestimonialsSection = ({
           {data.title}
         </h2>
       </div>
-      <div className="flex flex-wrap w-full max-w-[1200px] justify-between items-start ">
+      <motion.div
+        className="flex flex-wrap w-full max-w-[1200px] justify-between items-start "
+        initial={{ opacity: 0, x: "-100px" }}
+        whileInView={{ opacity: 1, x: "0px" }}
+        transition={{ type: "spring", damping: 15 }}
+      >
         {clientTestimonials.map((item: TestimonialItem) => (
           <div
             key={item.person}
@@ -57,7 +64,7 @@ const TestimonialsSection = ({
             {item.testimonial}
           </div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };

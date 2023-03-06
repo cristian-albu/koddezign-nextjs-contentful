@@ -20,7 +20,7 @@ const ContactPage = () => {
 
   const nameInvalidCheck: FormValidationFunc = () => {
     if (nameState.value.length < 1) {
-      return { message: "This field can&apos;t be empty", err: true };
+      return { message: "This field can't be empty", err: true };
     } else {
       return { message: "", err: false };
     }
@@ -35,7 +35,7 @@ const ContactPage = () => {
 
   const emailInvalidCheck: FormValidationFunc = () => {
     if (emailState.value.length < 2) {
-      return { message: "This field can&apos;t be empty", err: true };
+      return { message: "This field can't be empty", err: true };
     } else if (
       !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailState.value)
     ) {

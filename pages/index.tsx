@@ -2,6 +2,7 @@ import DynHead from "@/components/DynHead";
 import CallToActionSection from "@/components/Layout/CallToActionSection";
 import HeroSection from "@/components/Layout/HeroSection";
 import HomeAboutSection from "@/components/Layout/HomeAboutSection";
+import HomeBenefitsSection from "@/components/Layout/HomeBenefitsSection";
 import HomeOfferSection from "@/components/Layout/HomeOfferSection";
 import LogoQuilt from "@/components/Layout/LogoQuilt";
 import TestimonialsSection from "@/components/Layout/TestimonialsSection";
@@ -24,6 +25,7 @@ const Index = ({
       <HomeAboutSection />
       <LogoQuilt logoQuilt={logoQuilt} />
       <HomeOfferSection />
+      {/* <HomeBenefitsSection /> */}
       <TestimonialsSection clientTestimonials={clientTestimonials} />
       <CallToActionSection />
     </>
