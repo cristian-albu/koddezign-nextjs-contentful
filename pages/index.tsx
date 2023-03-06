@@ -17,7 +17,7 @@ const Index = ({
     <>
       <DynHead
         title="Koddezign"
-        description="You know, we've seen so many businesses struggle with their online presence. Maybe your website is outdated and not search engine optimized, or perhaps, you don't have any website at all."
+        description={`You know, we&apos;ve seen so many businesses struggle with their online presence. Maybe your website is outdated and not search engine optimized, or perhaps, you don&apos;t have any website at all.`}
         image="/assets/Koddezign_illustration.svg"
       />
       <HeroSection heroImgArrays={heroImgArrays} />

@@ -12,7 +12,7 @@ const Projects = ({
     <>
       <DynHead
         title="Our Projects"
-        description="We'll create a visually appealing, custom-tailored website that aligns with your brand's unique look and feel. Imagine having all the key elements for a successful website"
+        description={`We&apos;ll create a visually appealing, custom-tailored website that aligns with your brand&apos;s unique look and feel. Imagine having all the key elements for a successful website`}
         image="/assets/astadia_showcase_mockup.png"
       />
       <section className="flex flex-col justify-center items-center px-[2rem] py-[20vh] bg-gradient-to-tr from-white to-gray-100 relative">

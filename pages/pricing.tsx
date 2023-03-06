@@ -120,7 +120,7 @@ const Pricing = ({
                     </span>
                   </h4>
                   <Link href={"/contact"} className="btnPrimary mb-10">
-                    Let's start a project
+                    Let&apos;s start a project
                   </Link>
                 </div>
               ))}

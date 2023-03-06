@@ -20,7 +20,7 @@ const ContactPage = () => {
 
   const nameInvalidCheck: FormValidationFunc = () => {
     if (nameState.value.length < 1) {
-      return { message: "This field can't be empty", err: true };
+      return { message: "This field can&apos;t be empty", err: true };
     } else {
       return { message: "", err: false };
     }
@@ -35,7 +35,7 @@ const ContactPage = () => {
 
   const emailInvalidCheck: FormValidationFunc = () => {
     if (emailState.value.length < 2) {
-      return { message: "This field can't be empty", err: true };
+      return { message: "This field can&apos;t be empty", err: true };
     } else if (
       !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailState.value)
     ) {
@@ -117,7 +117,7 @@ const ContactPage = () => {
         <Section>
           <div className="flex items-center relative flex-wrap w-full max-w-[1200px] pt-[5rem] md:pt-5">
             <div className="w-full md:w-1/2 pl-[2rem] flex flex-col ">
-              <h1 className="text-4xl mb-5">Let's get in touch</h1>
+              <h1 className="text-4xl mb-5">Let&apos;s get in touch</h1>
               <p className="mb-5">
                 We check email every day so you can expect a reply very quick
               </p>
@@ -164,7 +164,7 @@ const ContactPage = () => {
                   />
                   {checkBoxErr && (
                     <p className="w-full text-red-500 mt-5">
-                      Please check all the requirements and don't forget to
+                      Please check all the requirements and don&apos;t forget to
                       agree with the privacy policy
                     </p>
                   )}
@@ -180,7 +180,7 @@ const ContactPage = () => {
                 <p className="text-5xl">📧</p>
 
                 <p className="text-xl my-5">
-                  You're message has been sent successfully!
+                  You&apos;re message has been sent successfully!
                 </p>
                 <p>We will talk to you soon.</p>
               </div>

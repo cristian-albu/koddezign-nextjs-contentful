@@ -10,7 +10,7 @@ const AboutUs = () => {
     <>
       <DynHead
         title="About us"
-        description="We're a small team of designers, developers and content writers that loves to bring awesome businesses to light through 100% custom websites."
+        description={`We&apos;re a small team of designers, developers and content writers that loves to bring awesome businesses to light through 100% custom websites.`}
         image="/assets/Koddezign_illustration.svg"
       />
       <Section bg={`gradient-to-tr from-white to-gray-100`}>
@@ -27,10 +27,10 @@ const AboutUs = () => {
               <h1 className="text-2xl md:text-5xl">{data.title}</h1>
               <p>{data.text}</p>
               <p className="my-5">
-                We're a small team of designers, developers and content writers
-                that loves to bring awesome businesses to light through 100%
-                custom websites. With so many templates floating around, we fear
-                that what makes a business special may be lost in a sea of
+                We&apos;re a small team of designers, developers and content
+                writers that loves to bring awesome businesses to light through
+                100% custom websites. With so many templates floating around, we
+                fear that what makes a business special may be lost in a sea of
                 look-alikes. We love what we do and we hope you will do too.
               </p>
               <p className="text-xl mb-3">Social media:</p>
