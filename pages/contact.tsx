@@ -111,12 +111,12 @@ const ContactPage = () => {
         description="Contact us for a free consultation, to evaluate your website and discover the potential for improvement or to start building something from scratch."
         image="/assets/Koddezign_illustration.svg"
       />
-      <div className="relative min-h-[90vh] w-full py-[5rem] bg-white">
+      <div className="relative min-h-none md:min-h-[90vh] w-full py-0 md:py-[5rem] bg-white">
         <BlurBall horizontal="right-0" vertical="top-0" />
         <BlurBall horizontal="left-[-10%]" vertical="bottom-0" />
         <Section>
           <div className="flex items-center relative flex-wrap w-full max-w-[1200px] pt-[5rem] md:pt-5">
-            <div className="w-full md:w-1/2 pl-[2rem] flex flex-col ">
+            <div className="w-full md:w-1/2 pl-0 md:pl-[2rem] flex flex-col ">
               <h1 className="text-4xl mb-5">Let&apos;s get in touch</h1>
               <p className="mb-5">
                 We check email every day so you can expect a reply very quick
@@ -131,7 +131,7 @@ const ContactPage = () => {
             </div>
             {!mailSentSuccess && (
               <form
-                className="bg-white/20 backdrop-blur-md p-[2rem] shadow-black/20 shadow-2xl rounded-md w-full mt-[3rem] md:mt-0 md:w-1/2 mb-[3rem]"
+                className="bg-white/20 backdrop-blur-md p-5 md:p-[2rem] shadow-black/20 shadow-2xl rounded-md w-full mt-[3rem] md:mt-0 md:w-1/2 mb-[3rem]"
                 method="post"
                 onSubmit={(e) => handleSubmit(e)}
               >

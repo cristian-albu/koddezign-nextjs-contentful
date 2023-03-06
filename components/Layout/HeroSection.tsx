@@ -13,13 +13,21 @@ const styles = {
 
 const HeroSection = ({
   heroImgArrays,
+  isMobile,
 }: {
   heroImgArrays: Array<Array<string>>;
+  isMobile: boolean;
 }) => {
   const { scrollY } = useScroll();
 
   const y1 = useTransform(scrollY, [0, 300], [0, -200]);
   const y2 = useTransform(scrollY, [0, 300], [0, -100]);
+
+  const attributes = !isMobile && {
+    initial: { opacity: 0, x: "-100px" },
+    whileInView: { opacity: 1, x: "0px" },
+    transition: { type: "spring", damping: 15 },
+  };
 
   return (
     <section className="flex flex-wrap justify-center items-center relative md:flex-row-reverse px-[2rem] bg-gradient-to-tr from-white to-gray-200">
@@ -83,9 +91,7 @@ const HeroSection = ({
 
       <motion.div
         className="max-w-[600px] flex flex-col items-start w-full md:w-1/2  md:pr-[10vw] gap-5 "
-        initial={{ opacity: 0, x: "-100px" }}
-        whileInView={{ opacity: 1, x: "0px" }}
-        transition={{ type: "spring", damping: 15 }}
+        {...attributes}
       >
         <h1 className="text-3xl md:text-6xl md:leading-[1.3]">{data.title}</h1>
         <p>{data.description}</p>

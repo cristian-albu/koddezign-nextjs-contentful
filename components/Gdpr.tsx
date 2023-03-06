@@ -52,12 +52,12 @@ const styles = {
   container: `fixed bottom-0 left-0  flex flex-col justify-center items-center `,
   containerOpened: `w-[100vw] h-[100vh] p-[2rem] md:p-[4rem] 2xl:p-[5rem]`,
   prefButton: `absolute bottom-[1.5rem] left-[1.5rem] text-2xl bg-[#fff] p-1 drop-shadow-xl rounded-full cursor-pointer flex items-end`,
-  bannerContainer: `absolute left-[10vw] bottom-0 bg-white text-black text-sm p-10 rounded-tl-[3rem]  rounded-tr-[3rem] drop-shadow-xl w-[80vw] flex flex-col drop-shadow-2xl`,
-  prefsContainer: `bg-white p-8 rounded-md drop-shadow-xl w-[100%] flex flex-col overflow-auto max-h-[80vh] items-start max-w-[1200px]`,
+  bannerContainer: `absolute left-0 md:left-[10vw] bottom-0 bg-white text-black text-sm p-10 rounded-tl-[3rem]  rounded-tr-[3rem] drop-shadow-xl w-[100vw] md:w-[80vw] flex flex-col drop-shadow-2xl`,
+  prefsContainer: `bg-white p-5 md:p-8 rounded-md drop-shadow-xl w-[100%] flex flex-col overflow-auto max-h-[80vh] items-start max-w-[1200px]`,
   close: `absolute w-[100%] h-[100%] transition bg-[#00000021] backdrop-blur-sm flex justify-end items-start pt-[5rem] pr-[3rem] cursor-pointer`,
   secondaryButton: `flex items-center cursor-pointer gap-2 bg-black shadow-md shadow-black/20 hover:shadow-lg hover:scale-[1.03] text-white rounded-md px-3 py-2 transition hover:bg-gray-800`,
-  buttonContainer: `flex flex-wrap justify-between items-center w-full`,
-  buttonContainer2: `flex flex-wrap justify-start gap-5 items-center`,
+  buttonContainer: `gap-5 flex  flex-wrap justify-between items-center w-full`,
+  buttonContainer2: `w-full flex-col md:flex-row flex  flex-wrap justify-start gap-5 items-start md:items-center mb-5 md:mb-0`,
   label: `flex gap-1 cursor-pointer mb-3`,
 };
 
@@ -248,37 +248,35 @@ export default function Gdpr() {
           <div className="mb-5 flex flex-col">
             <span>
               {staticData.preferences.seeMore}{" "}
-              <div
+              <button
                 className="cursor-pointer hover:text-pink transition-colors"
                 onClick={() => openPrivacy()}
               >
                 {staticData.banner.btnPrivacy}
-              </div>
+              </button>
             </span>
           </div>
           <div className={styles.buttonContainer}>
-            <button className={`btnPrimary`} onClick={() => openPrefs()}>
+            <button
+              className={` bg-white flex items-center gap-2 text-black px-3 py-2 mr-auto`}
+              onClick={() => openPrefs()}
+            >
               {<AiOutlineSetting />}
               {staticData.banner.btnPrefs}
             </button>
 
-            <div className={styles.buttonContainer2}>
-              <button
-                className={`btnPrimary`}
-                onClick={() => handleRefuseAll()}
-              >
-                {<RxCrossCircled />}
-                {staticData.banner.btnRefuse}
-              </button>
+            <button
+              className={` bg-white flex items-center gap-2 text-black px-3 py-2`}
+              onClick={() => handleRefuseAll()}
+            >
+              {<RxCrossCircled />}
+              {staticData.banner.btnRefuse}
+            </button>
 
-              <button
-                className={`btnPrimary`}
-                onClick={() => handleAcceptAll()}
-              >
-                {<AiOutlineCheckCircle />}
-                {staticData.banner.btnAccetp}
-              </button>
-            </div>
+            <button className={`btnPrimary`} onClick={() => handleAcceptAll()}>
+              {<AiOutlineCheckCircle />}
+              {staticData.banner.btnAccetp}
+            </button>
           </div>
         </div>
       ) : (

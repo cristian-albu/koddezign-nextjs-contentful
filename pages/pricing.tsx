@@ -36,11 +36,11 @@ const Pricing = ({
                   do has a custom offer and everything is negotiable.{" "}
                 </p>
               </div>
-              <div className="flex flex-row md:flex-col justify-between md:justify-start items-start mb-5 ">
+              <div className="flex flex-col justify-between md:justify-start items-start mb-5 ">
                 {clientList.map((item: Service, index: number) => (
                   <button
                     key={item.id}
-                    className={`w-[32%] md:w-full bg-white p-3 md:p-5 shadow-black/15 shadow-lg rounded-lg flex flex-col justify-start items-start text-left border-2 mb-5 ${
+                    className={`w-full bg-white p-3 md:p-5 shadow-black/15 shadow-lg rounded-lg flex flex-col justify-start items-start text-left border-2 mb-5 ${
                       tabState == index ? "border-[#ff5500]" : "transparent"
                     }`}
                     onClick={() => setTabState(index)}
@@ -103,7 +103,7 @@ const Pricing = ({
                     {item.services.map((subServices: ClientServices) => (
                       <div
                         key={subServices.title}
-                        className="w-1/3 mb-3 gap-2 flex items-center justify-start"
+                        className="w-1/2 md:w-1/3 mb-3 gap-2 flex items-center justify-start"
                       >
                         <Image
                           src={subServices.img}

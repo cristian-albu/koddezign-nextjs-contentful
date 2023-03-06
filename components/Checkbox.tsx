@@ -24,7 +24,7 @@ export function Checkbox({
     useContext(PrivacyContext);
   return (
     <div className="cb-custom-cls">
-      <label>
+      <label className="flex flex-wrap">
         <input
           name={name}
           id={name}
@@ -34,10 +34,10 @@ export function Checkbox({
           disabled={disabled ? disabled : false}
         />
         <div />
-        <p>{text}</p>
+        <p className="flex flex-wrap">{text}</p>
         {privacy && (
           <button
-            className="flex items-center gap-1"
+            className="flex items-center gap-1 w-full mt-5 md:mt-0"
             onClick={() => setShowPrivacy(true)}
           >
             <MdOutlinePolicy />

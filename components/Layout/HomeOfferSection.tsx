@@ -5,7 +5,24 @@ import Link from "next/link";
 import BlurBall from "../BlurBall";
 import { motion } from "framer-motion";
 
-const HomeOfferSection = () => {
+const HomeOfferSection = ({ isMobile }: { isMobile: boolean }) => {
+  const attributes = !isMobile && {
+    initial: { opacity: 0, x: "-100px" },
+    whileInView: { opacity: 1, x: "0px" },
+    transition: { type: "spring", damping: 15 },
+  };
+
+  const attributes2 = !isMobile && {
+    initial: { opacity: 0, x: "100px" },
+    whileInView: { opacity: 1, x: "0px" },
+    transition: { type: "spring", damping: 15 },
+  };
+
+  const attributes3 = !isMobile && {
+    initial: { opacity: 0, y: "100px" },
+    whileInView: { opacity: 1, y: "0px" },
+    transition: { type: "spring", damping: 15 },
+  };
   return (
     <section className="flex justify-center items-center flex-wrap px-[2rem] py-[5rem] relative bg-gradient-to-br from-white to-gray-100">
       <BlurBall
@@ -16,21 +33,14 @@ const HomeOfferSection = () => {
       <div className="flex flex-wrap w-full max-w-[1200px] mb-[2rem] relative">
         <motion.div
           className="w-full md:w-[33%] flex flex-col justify-center gap-3 items-start"
-          initial={{ opacity: 0, x: "-100px" }}
-          whileInView={{ opacity: 1, x: "0px" }}
-          transition={{ type: "spring", damping: 15 }}
+          {...attributes}
         >
           <h2 className="text-xl md:text-3xl mb-5 border-b-[1px] border-b-gray-400 border-dashed pb-5">
             {data.title}
           </h2>
           <p>{data.description}</p>
         </motion.div>
-        <motion.div
-          className="w-full md:w-[66%]"
-          initial={{ opacity: 0, x: "100px" }}
-          whileInView={{ opacity: 1, x: "0px" }}
-          transition={{ type: "spring", damping: 15 }}
-        >
+        <motion.div className="w-full mt-5 md:mt-0 md:w-[66%]" {...attributes2}>
           <Image
             src={data.mainImage}
             width={900}
@@ -43,9 +53,7 @@ const HomeOfferSection = () => {
 
       <motion.div
         className="flex flex-wrap w-full max-w-[1200px] justify-between"
-        initial={{ opacity: 0, y: "100px" }}
-        whileInView={{ opacity: 1, y: "0px" }}
-        transition={{ type: "spring", damping: 15 }}
+        {...attributes3}
       >
         {data.keyBenefits.map((benefit: OfferItem, index: number) => (
           <div

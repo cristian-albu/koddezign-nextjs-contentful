@@ -7,9 +7,17 @@ import { motion } from "framer-motion";
 
 const TestimonialsSection = ({
   clientTestimonials,
+  isMobile,
 }: {
   clientTestimonials: Array<TestimonialItem>;
+  isMobile: boolean;
 }) => {
+  const attributes = !isMobile && {
+    initial: { opacity: 0, x: "-100px" },
+    whileInView: { opacity: 1, x: "0px" },
+    transition: { type: "spring", damping: 15 },
+  };
+
   return (
     <section className="flex flex-col justify-center items-center px-[2rem] py-[5rem] relative">
       <BlurBall vertical="top-0" horizontal="right-[-15%]" />
@@ -22,9 +30,7 @@ const TestimonialsSection = ({
       </div>
       <motion.div
         className="flex flex-wrap w-full max-w-[1200px] justify-between items-start "
-        initial={{ opacity: 0, x: "-100px" }}
-        whileInView={{ opacity: 1, x: "0px" }}
-        transition={{ type: "spring", damping: 15 }}
+        {...attributes}
       >
         {clientTestimonials.map((item: TestimonialItem) => (
           <div

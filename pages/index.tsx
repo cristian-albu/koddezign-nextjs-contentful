@@ -8,12 +8,19 @@ import LogoQuilt from "@/components/Layout/LogoQuilt";
 import TestimonialsSection from "@/components/Layout/TestimonialsSection";
 import clientsQuery from "@/lib/clientsQuery";
 import { InferGetServerSidePropsType } from "next";
+import { useEffect, useState } from "react";
 
 const Index = ({
   clientTestimonials,
   heroImgArrays,
   logoQuilt,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth <= 800);
+  }, []);
+
   return (
     <>
       <DynHead
@@ -21,12 +28,15 @@ const Index = ({
         description={`You know, we&apos;ve seen so many businesses struggle with their online presence. Maybe your website is outdated and not search engine optimized, or perhaps, you don&apos;t have any website at all.`}
         image="/assets/Koddezign_illustration.svg"
       />
-      <HeroSection heroImgArrays={heroImgArrays} />
-      <HomeAboutSection />
+      <HeroSection heroImgArrays={heroImgArrays} isMobile={isMobile} />
+      <HomeAboutSection isMobile={isMobile} />
       <LogoQuilt logoQuilt={logoQuilt} />
-      <HomeOfferSection />
+      <HomeOfferSection isMobile={isMobile} />
       {/* <HomeBenefitsSection /> */}
-      <TestimonialsSection clientTestimonials={clientTestimonials} />
+      <TestimonialsSection
+        clientTestimonials={clientTestimonials}
+        isMobile={isMobile}
+      />
       <CallToActionSection />
     </>
   );
