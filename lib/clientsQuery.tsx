@@ -21,29 +21,29 @@ export default async function clientsQuery(
     const clientItem: ClientList = data.items.map((e: any) => ({
       id: e.sys.id,
       name: e.fields.name,
-      logo: `http:${e?.fields.logo?.fields?.file?.url}`,
+      logo: `https:${e?.fields.logo?.fields?.file?.url}`,
       link: e.fields.link ? e.fields.link : "",
       projectTitle: e.fields.projectTitle,
       description: e.fields.description ? e.fields.description : "",
       services: e.fields.services
         ? e.fields.services.map((e: any) => ({
             title: e.fields.title,
-            img: `http:${e.fields.technologyLogo.fields.file.url}${
+            img: `https:${e.fields.technologyLogo.fields.file.url}${
               serviceItemPhotoSize ? serviceItemPhotoSize : "?w=24&h=24"
             }`,
           }))
         : [],
-      mainPhoto: `http:${e?.fields.mainPhoto?.fields?.file?.url}${
+      mainPhoto: `https:${e?.fields.mainPhoto?.fields?.file?.url}${
         mainPhotoSize ? mainPhotoSize : "?w=327&h=209"
       }`,
-      mobilePhoto: `http:${e?.fields.mobilePhoto?.fields?.file?.url}${
+      mobilePhoto: `https:${e?.fields.mobilePhoto?.fields?.file?.url}${
         mobilePhotoSize ? mobilePhotoSize : "?w=70&h=132"
       }`,
       workInProgress: e.fields.workInProgress,
       hasTestimonial: e.fields.hasTestimonial,
       testimonial: `${e.fields.testimonial}`,
       keyPerson: `${e.fields.keyPerson}`,
-      keyPersonImg: `http:${e?.fields.keyPersonImg?.fields?.file?.url}${
+      keyPersonImg: `https:${e?.fields.keyPersonImg?.fields?.file?.url}${
         keyPersonPhotoSize ? keyPersonPhotoSize : "?w=150&h=150"
       }`,
       keyPersonPosition: `${e.fields.keyPersonPosition}`,

@@ -19,11 +19,11 @@ export default async function servicesQuery() {
       description: e.fields.description,
       features: e.fields.features,
       startingPrice: e.fields.startingPrice,
-      image: `http:${e?.fields.image?.fields?.file?.url}`,
+      image: `https:${e?.fields.image?.fields?.file?.url}`,
       services: e.fields.subServices
         ? e.fields.subServices.map((e: any) => ({
             title: e.fields.title,
-            img: `http:${e.fields.technologyLogo.fields.file.url}`,
+            img: `https:${e.fields.technologyLogo.fields.file.url}`,
           }))
         : [],
     }));
